@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('_bootstrap_meta')%>
+
+    <title>Assign Review</title>
+  </head>
+  <body>
+    <!-- Header Partial -->
+    <%- include('_header')%>
+
+    <div style="display: flex; justify-content: space-around">
+      <div class="mt-5 pt-3 border border-dark" style="width: 40%">
+        <div class="mx-auto mt-3 p-3" style="width: 450px">
+          <h2>Assign Review to Employee</h2>
+        </div>
+
+        <div class="m-4 p-4" style="width: 85%">
+          <form
+            action="/admin/assign-review"
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            "
+            method="post"
+          >
+            <div class="mb-4">
+              <h4>Employee</h4>
+              <select class="form-select" name="employee">
+                <!-- go through every user from req.user -->
+                <% for(user of users){ %>
+                <option value="<%= user.id %>"><%= user.name %></option>
+                <% } %>
+              </select>
+            </div>
+
+            <div>
+              <h4>Reviewer</h4>
+              <select class="form-select" name="reviewer">
+                <% for(user of users){ %>
+                <option value="<%= user.id %>"><%= user.name %></option>
+                <% } %>
+              </select>
+            </div>
+
+            <div
+              style="display: flex; justify-content: center; margin-top: 20px"
+            >
+              <button type="submit" class="btn-sm btn-primary">Assign</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="mt-5 pt-3 border border-dark" style="width: 40%">
+        <div class="mx-auto mt-3" style="width: 200px">
+          <h2>Make Admin</h2>
+        </div>
+
+        <div class="m-4 p-4" style="width: 85%">
+          <form
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+            "
+            action="/admin/make-admin"
+            method="post"
+          >
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              name="adminName"
+            >
+              <% for(user of users){ %>
+              <option value="<%= user.id %>"><%= user.name %></option>
+              <% } %>
+            </select>
+            <div
+              style="display: flex; justify-content: center; margin-top: 38%"
+            >
+              <button type="submit" class="btn-sm btn-primary">
+                Make Admin
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <%- include('_bootstrap_script')%>
+  </body>
+</html>

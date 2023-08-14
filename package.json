@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "keywords": [],
-  "author": "Sahil",
+  "author": "Masoom Rizvi",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^11.0.0",
